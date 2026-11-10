@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --color-abyss: #05060f;
+  --color-abyss-2: #0b1020;
+  --color-panel: #0d1226;
+  --color-line: rgba(34, 211, 238, 0.14);
+  --color-cyan: #22d3ee;
+  --color-violet: #8b5cf6;
+  --color-ink: #e6e9f5;
+  --color-ink-2: #9aa3c0;
+  --color-ink-3: #5b6380;
+  --font-display: "Space Grotesk", "Sora", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-abyss);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Kartu kaca (glassmorphism) */
+.glass {
+  background: rgba(13, 18, 38, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--color-line);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.25), 0 0 24px rgba(34, 211, 238, 0.18);
+}
+
+.text-gradient {
+  background: linear-gradient(120deg, #22d3ee, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Kursor kustom (desktop saja) */
+@media (pointer: fine) {
+  .cursor-dot,
+  .cursor-ring {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    border-radius: 9999px;
+  }
+  .cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--color-cyan);
+  }
+  .cursor-ring {
+    width: 34px;
+    height: 34px;
+    border: 1.5px solid rgba(34, 211, 238, 0.5);
+    transition: transform 0.15s ease, border-color 0.2s ease;
+  }
+}
+
+/* Hormati preferensi reduce-motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.3);
+}
